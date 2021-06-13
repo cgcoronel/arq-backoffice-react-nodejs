@@ -8,7 +8,6 @@
 - express.js
 - node-fetch.
 
-```
 ### **Instalación**:
 
 - Ejecutar test:
