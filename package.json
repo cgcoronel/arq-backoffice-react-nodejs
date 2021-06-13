@@ -1,0 +1,52 @@
+{
+  "name": "scaffolding-ms",
+  "version": "1.0.0",
+  "description": "Scaffolding microservice",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/server/index.js",
+    "test": "NODE_ENV=develop jest",
+    "test:watch": "jest --watch",
+    "coverage": "jest --coverage",
+    "dev": "nodemon ./src/server/index.js",
+    "debug": "node --inspect-brk ./src/server/index.js",
+    "lint": "eslint --fix --ext .js,.jsx ./src --color",
+    "build": ". ./tag.sh && docker build . -t $PACKAGE_TAG"
+  },
+  "author": "Cristian Coronel",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.736.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-http-context": "^1.2.4",
+    "http-errors": "^1.7.3",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "jest": "^26.5.3"
+  },
+  "jest": {
+    "collectCoverage": false,
+    "coverageThreshold": {
+      "global": {
+        "branches": 2,
+        "functions": 2,
+        "lines": 50,
+        "statements": 2
+      }
+    },
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/__test__/**",
+      "!**/coverage/**",
+      "!**/config/**",
+      "!**/src/server/routes/**",
+      "!**/src/server/index.js",
+      "!**/src/server/events.js",
+      "!**/src/server/middleware/index.js"
+    ]
+  }
+}
